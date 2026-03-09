@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advocacia Dra. Marli | Soluções Jurídicas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fbf8f6',
+                            100: '#f5f0eb',
+                            200: '#e8ded4',
+                            300: '#d5c2b0',
+                            400: '#bf9e85',
+                            500: '#ac8160',
+                            600: '#9d6d51',
+                            700: '#835745',
+                            800: '#6d483c',
+                            900: '#583b33',
+                            950: '#2e1e1a',
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm1 1h38v38H1V1z' fill='%23e8ded4' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 1px #ac8160;
+            border-color: #ac8160;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-brand-50 text-stone-900 antialiased font-sans flex flex-col min-h-screen selection:bg-brand-200 selection:text-brand-900">
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-stone-200/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" onclick="showPage('home')" class="flex items-center gap-3 group">
+                <img src="image 34.png" alt="Advocacia Dra. Marli" class="h-10 w-auto object-contain">
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-10">
+                <button onclick="showPage('home')"
+                    class="nav-link text-xs font-medium uppercase tracking-widest text-stone-950 hover:text-brand-700 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-700 hover:after:w-full after:transition-all">Início</button>
+                <button onclick="showPage('practice')"
+                    class="nav-link text-xs font-medium uppercase tracking-widest text-stone-500 hover:text-brand-700 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-700 hover:after:w-full after:transition-all">Áreas
+                    de Atuação</button>
+                <button onclick="showPage('attorneys')"
+                    class="nav-link text-xs font-medium uppercase tracking-widest text-stone-500 hover:text-brand-700 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-700 hover:after:w-full after:transition-all">A
+                    Equipe</button>
+                <button onclick="showPage('cases')"
+                    class="nav-link text-xs font-medium uppercase tracking-widest text-stone-500 hover:text-brand-700 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-700 hover:after:w-full after:transition-all">Casos</button>
+            </div>
+
+            <!-- CTA -->
+            <div class="hidden md:flex">
+                <button onclick="showPage('contact')"
+                    class="bg-stone-950 hover:bg-brand-700 text-white text-xs font-semibold uppercase tracking-wider px-6 py-3 rounded-sm transition-all shadow-lg shadow-stone-900/10 hover:shadow-brand-700/20 flex items-center gap-2 group">
+                    <span>Consultoria</span>
+                    <iconify-icon icon="solar:arrow-right-linear" width="16"
+                        class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                </button>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-stone-950" onclick="toggleMobileMenu()">
+                <iconify-icon icon="solar:hamburger-menu-linear" width="24"></iconify-icon>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-20 left-0 w-full bg-white border-b border-stone-100 p-6 flex-col gap-6 shadow-xl animate-fade-in-down">
+            <button onclick="showPage('home'); toggleMobileMenu()"
+                class="text-left text-sm font-medium uppercase tracking-widest text-stone-950">Início</button>
+            <button onclick="showPage('practice'); toggleMobileMenu()"
+                class="text-left text-sm font-medium uppercase tracking-widest text-stone-500">Áreas de Atuação</button>
+            <button onclick="showPage('attorneys'); toggleMobileMenu()"
+                class="text-left text-sm font-medium uppercase tracking-widest text-stone-500">A Equipe</button>
+            <button onclick="showPage('cases'); toggleMobileMenu()"
+                class="text-left text-sm font-medium uppercase tracking-widest text-stone-500">Casos</button>
+            <button onclick="showPage('contact'); toggleMobileMenu()"
+                class="text-left text-sm font-medium uppercase tracking-widest text-brand-700">Fale Conosco</button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="main-content" class="flex-grow pt-20">
+
+        <!-- PAGE: HOME -->
+        <section id="home" class="page-section fade-in">
+            <!-- Enhanced Hero Section with Parallax -->
+            <div class="relative w-full h-[85vh] flex items-center parallax-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1436450412740-6b988f486c6b?q=80&w=2070&auto=format&fit=crop');">
+                <div class="absolute inset-0 bg-stone-950/40 backdrop-blur-[2px]"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/20 to-transparent"></div>
+
+                <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+                    <div class="max-w-4xl">
+                        <div
+                            class="flex items-center gap-3 mb-6 opacity-0 animate-[fadeIn_0.5s_ease-out_0.2s_forwards]">
+                            <span class="h-px w-12 bg-white/60"></span>
+                            <span class="text-white/80 text-xs font-semibold uppercase tracking-[0.2em]">Escritório
+                                Jurídico</span>
+                        </div>
+
+                        <h1
+                            class="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.95] mb-8 tracking-tight opacity-0 animate-[fadeIn_0.5s_ease-out_0.4s_forwards]">
+                            Ética e <br>
+                            <span class="italic font-light text-brand-200">Justiça.</span>
+                        </h1>
+
+                        <p
+                            class="text-lg md:text-xl text-stone-200 font-light max-w-2xl leading-relaxed mb-10 opacity-0 animate-[fadeIn_0.5s_ease-out_0.6s_forwards]">
+                            Prestação de serviços legais com foco em excelência, responsabilidade e compromisso com a
+                            defesa dos direitos de nossos clientes de forma humanizada.
+                        </p>
+
+                        <div class="flex flex-wrap gap-4 opacity-0 animate-[fadeIn_0.5s_ease-out_0.8s_forwards]">
+                            <button onclick="showPage('contact')"
+                                class="bg-brand-600 text-white border border-brand-600 px-8 py-4 rounded-sm text-xs font-semibold uppercase tracking-widest hover:bg-brand-700 transition-colors shadow-lg shadow-brand-900/20">
+                                Solicitar Orientação
+                            </button>
+                            <button onclick="showPage('practice')"
+                                class="bg-transparent backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-sm text-xs font-semibold uppercase tracking-widest hover:bg-white/10 transition-colors">
+                                Nossas Especialidades
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scroll Indicator -->
+                <div
+                    class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 animate-bounce">
+                    <span class="text-[10px] uppercase tracking-widest">Descer</span>
+                    <iconify-icon icon="solar:arrow-down-linear" width="20"></iconify-icon>
+                </div>
+            </div>
+
+            <!-- Introduction Grid -->
+            <div class="bg-white py-24 lg:py-32">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
+                        <div class="lg:col-span-5">
+                            <h2
+                                class="text-4xl md:text-5xl font-serif text-stone-950 mb-8 leading-tight tracking-tight">
+                                O encontro entre <span class="italic text-brand-700">Ética</span> e <span
+                                    class="italic text-brand-700">Responsabilidade</span>.</h2>
+                            <div class="w-20 h-1 bg-brand-500 mb-8"></div>
+                            <p class="text-stone-500 font-light leading-relaxed mb-6">
+                                Ser reconhecido como um escritório de advocacia confiável, acessível e eficiente,
+                                consolidando-se como referência em atendimento jurídico humanizado e comprometido com
+                                resultados.
+                            </p>
+                            <p class="text-stone-500 font-light leading-relaxed">
+                                Oferecemos serviços jurídicos de qualidade, baseados em princípios sólidos de
+                                transparência e comunicação direta, sempre visando as melhores soluções para demandas
+                                trabalhistas, civis e familiares.
+                            </p>
+                            <div class="mt-10">
+                                <a href="#" onclick="showPage('attorneys')"
+                                    class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-stone-900 hover:text-brand-700 transition-colors pb-1 border-b border-stone-200 hover:border-brand-700">
+                                    Conheça a Advogada <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+                            <!-- Card 1 -->
+                            <div
+                                class="p-8 bg-brand-50 rounded-sm border border-brand-100/50 hover:shadow-lg hover:shadow-brand-100/50 transition-all duration-300">
+                                <iconify-icon icon="solar:briefcase-linear"
+                                    class="text-brand-700 text-4xl mb-4"></iconify-icon>
+                                <h3 class="text-lg font-serif text-stone-900 mb-2">Direito Trabalhista</h3>
+                                <p class="text-sm text-stone-600 font-light leading-relaxed">Defesa de direitos
+                                    trabalhistas, reclamações e orientações jurídicas eficientes.</p>
+                            </div>
+                            <!-- Card 2 -->
+                            <div
+                                class="p-8 bg-brand-50 rounded-sm border border-brand-100/50 hover:shadow-lg hover:shadow-brand-100/50 transition-all duration-300 sm:mt-8">
+                                <iconify-icon icon="solar:document-add-linear"
+                                    class="text-brand-700 text-4xl mb-4"></iconify-icon>
+                                <h3 class="text-lg font-serif text-stone-900 mb-2">Direito Civil</h3>
+                                <p class="text-sm text-stone-600 font-light leading-relaxed">Elaboração de contratos,
+                                    cálculos de indenizações, obrigações e disputas cíveis diversas.</p>
+                            </div>
+                            <!-- Card 3 -->
+                            <div
+                                class="p-8 bg-brand-50 rounded-sm border border-brand-100/50 hover:shadow-lg hover:shadow-brand-100/50 transition-all duration-300">
+                                <iconify-icon icon="solar:users-group-two-rounded-linear"
+                                    class="text-brand-700 text-4xl mb-4"></iconify-icon>
+                                <h3 class="text-lg font-serif text-stone-900 mb-2">Direito de Família</h3>
+                                <p class="text-sm text-stone-600 font-light leading-relaxed">Divórcio, guarda de filhos,
+                                    pensão alimentícia e partilha de bens executados com excelência e cuidado.</p>
+                            </div>
+                            <!-- Card 4 -->
+                            <div
+                                class="p-8 bg-brand-50 rounded-sm border border-brand-100/50 hover:shadow-lg hover:shadow-brand-100/50 transition-all duration-300 sm:mt-8">
+                                <iconify-icon icon="solar:hand-shake-linear"
+                                    class="text-brand-700 text-4xl mb-4"></iconify-icon>
+                                <h3 class="text-lg font-serif text-stone-900 mb-2">Consultoria Jurídica</h3>
+                                <p class="text-sm text-stone-600 font-light leading-relaxed">Orientação preventiva
+                                    focada para pessoas físicas e empresas, evitando trâmites judiciais complexos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parallax Quote Section -->
+            <div class="relative py-40 parallax-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop');">
+                <div class="absolute inset-0 bg-stone-950/80"></div>
+                <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+                    <iconify-icon icon="solar:quote-up-square-linear"
+                        class="text-brand-500 text-5xl mb-8 opacity-50"></iconify-icon>
+                    <h2 class="text-3xl md:text-5xl font-serif text-white leading-tight italic tracking-tight">
+                        "O compromisso com a justiça e a transparência é o fundamento que consolida resultados
+                        verdadeiros."
+                    </h2>
+                    <div class="mt-8 flex justify-center items-center gap-4">
+                        <div class="h-px w-12 bg-brand-500"></div>
+                        <span class="text-stone-300 text-sm font-medium uppercase tracking-widest">Nossa Missão</span>
+                        <div class="h-px w-12 bg-brand-500"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Section -->
+            <div class="bg-white py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <span class="text-brand-700 text-xs font-bold uppercase tracking-widest">Nossa
+                                Metodologia</span>
+                            <h2 class="text-3xl md:text-5xl font-serif text-stone-950 mt-3 mb-8 tracking-tight">
+                                Atendimento Humanizado <br>e Eficiente.</h2>
+                            <p class="text-stone-500 font-light mb-10 leading-relaxed">
+                                Garantimos que cada cliente compreenda de maneira clara seus direitos, as etapas
+                                processuais e as possíveis soluções jurídicas propostas.
+                            </p>
+
+                            <div
+                                class="space-y-8 relative before:absolute before:left-3.5 before:top-2 before:bottom-2 before:w-px before:bg-stone-200">
+                                <!-- Step 1 -->
+                                <div class="relative pl-12">
+                                    <div
+                                        class="absolute left-0 top-0 w-8 h-8 rounded-full bg-stone-100 border border-stone-200 text-brand-700 flex items-center justify-center text-xs font-bold font-serif z-10">
+                                        1</div>
+                                    <h4 class="text-lg font-medium text-stone-900 mb-2">Análise do Caso</h4>
+                                    <p class="text-sm text-stone-500">Revisão aprofundada das circunstâncias e da
+                                        legislação aplicável com base na atual experiência processual.</p>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="relative pl-12">
+                                    <div
+                                        class="absolute left-0 top-0 w-8 h-8 rounded-full bg-stone-100 border border-stone-200 text-brand-700 flex items-center justify-center text-xs font-bold font-serif z-10">
+                                        2</div>
+                                    <h4 class="text-lg font-medium text-stone-900 mb-2">Estratégia Defensiva</h4>
+                                    <p class="text-sm text-stone-500">Comunicação constante na formulação da abordagem
+                                        jurídica, priorizando a transparência ética com o cliente.</p>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="relative pl-12">
+                                    <div
+                                        class="absolute left-0 top-0 w-8 h-8 rounded-full bg-stone-100 border border-stone-200 text-brand-700 flex items-center justify-center text-xs font-bold font-serif z-10">
+                                        3</div>
+                                    <h4 class="text-lg font-medium text-stone-900 mb-2">Defesa Processual</h4>
+                                    <p class="text-sm text-stone-500">Atuação assertiva e firme nos principais tribunais
+                                        na área civil, trabalhista e de proteção à família.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="relative h-full min-h-[500px] bg-stone-100 rounded-sm overflow-hidden border border-brand-200 shadow-md">
+                            <img src="image 33.png" class="absolute inset-0 w-full h-full object-contain p-8 opacity-90"
+                                alt="Logo Dra. Marli">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pre-Footer CTA -->
+            <div class="bg-stone-950 py-24 relative overflow-hidden">
+                <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+                    <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 tracking-tight">Precisa de nossa
+                        orientação?</h2>
+                    <p class="text-stone-400 font-light mb-10 max-w-xl mx-auto">
+                        Agende uma consulta. Analisamos sua demanda com clareza e discrição, fornecendo soluções
+                        jurídicas concretas.
+                    </p>
+                    <button onclick="showPage('contact')"
+                        class="bg-white text-stone-950 px-10 py-4 rounded-sm text-sm font-semibold uppercase tracking-widest hover:bg-brand-50 transition-colors">
+                        Agendar Atendimento
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: PRACTICE AREAS -->
+        <section id="practice" class="page-section hidden fade-in bg-white min-h-screen">
+            <div class="bg-brand-50/50 py-24 border-b border-stone-200">
+                <div class="max-w-7xl mx-auto px-6">
+                    <h1 class="text-4xl md:text-6xl font-serif text-stone-950 mb-6 tracking-tight">Áreas de Atuação</h1>
+                    <p class="text-stone-500 max-w-2xl font-light text-lg">Soluções eficientes e seguras para pessoas
+                        físicas e empresas nas mais diversas necessidades legais.</p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 py-20">
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    <!-- Card 1 -->
+                    <div
+                        class="group p-8 rounded-sm border border-stone-100 hover:border-brand-200 bg-white hover:bg-stone-50 transition-all duration-300 hover:-translate-y-1">
+                        <div
+                            class="w-12 h-12 rounded-sm bg-stone-100 text-stone-900 group-hover:bg-brand-700 group-hover:text-white flex items-center justify-center mb-6 transition-colors">
+                            <iconify-icon icon="solar:briefcase-linear" width="24"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-serif text-stone-900 mb-3">Direito Trabalhista</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed font-light">
+                            Defesa ativa dos direitos do trabalhador. Conduzimos reclamações trabalhistas, rescisões
+                            indiretas e fornecemos toda a orientação jurídica necessária envolvendo vínculos
+                            empregatícios.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="group p-8 rounded-sm border border-stone-100 hover:border-brand-200 bg-white hover:bg-stone-50 transition-all duration-300 hover:-translate-y-1">
+                        <div
+                            class="w-12 h-12 rounded-sm bg-stone-100 text-stone-900 group-hover:bg-brand-700 group-hover:text-white flex items-center justify-center mb-6 transition-colors">
+                            <iconify-icon icon="solar:document-text-linear" width="24"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-serif text-stone-900 mb-3">Direito Civil</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed font-light">
+                            Assessoria na elaboração de contratos, cálculos e negociações de indenizações,
+                            regulamentação de obrigações em disputas civis para pessoa física e jurídica.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="group p-8 rounded-sm border border-stone-100 hover:border-brand-200 bg-white hover:bg-stone-50 transition-all duration-300 hover:-translate-y-1">
+                        <div
+                            class="w-12 h-12 rounded-sm bg-stone-100 text-stone-900 group-hover:bg-brand-700 group-hover:text-white flex items-center justify-center mb-6 transition-colors">
+                            <iconify-icon icon="solar:users-group-two-rounded-linear" width="24"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-serif text-stone-900 mb-3">Direito de Família</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed font-light">
+                            Orientação sensível e protetiva em processos de divórcio, ações de guarda, fixação de pensão
+                            alimentícia e procedimentos de partilha de bens.
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div
+                        class="group p-8 rounded-sm border border-stone-100 hover:border-brand-200 bg-white hover:bg-stone-50 transition-all duration-300 hover:-translate-y-1">
+                        <div
+                            class="w-12 h-12 rounded-sm bg-stone-100 text-stone-900 group-hover:bg-brand-700 group-hover:text-white flex items-center justify-center mb-6 transition-colors">
+                            <iconify-icon icon="solar:chat-round-check-linear" width="24"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-serif text-stone-900 mb-3">Consultoria Jurídica</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed font-light">
+                            Acompanhamento legal preventivo e orientação aprofundada para que nossos clientes evitem
+                            longas demandas e riscos processuais no dia a dia do seu negócio.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: ATTORNEYS -->
+        <section id="attorneys" class="page-section hidden fade-in">
+            <div class="relative bg-stone-950 py-32 parallax-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop');">
+                <div class="absolute inset-0 bg-stone-950/80"></div>
+                <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+                    <h1 class="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Nossa Liderança</h1>
+                    <p class="text-stone-400 max-w-2xl mx-auto font-light text-lg">
+                        Atendimento direcionado e comprometimento inabalável com os resultados.
+                    </p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 py-24 bg-white flex justify-center">
+                <div class="max-w-sm">
+                    <!-- Attorney -->
+                    <div class="group">
+                        <div class="aspect-[4/5] bg-stone-200 rounded-sm mb-6 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-stone-300"></div>
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
+                                class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                alt="Dra. Marli de Jesus">
+                            <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-3 py-1">
+                                <span class="text-stone-900 text-xs font-bold uppercase tracking-widest">Sócia
+                                    Fundadora</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif text-stone-900">Dra. Marli de Jesus</h3>
+                        <p class="text-brand-700 text-xs font-semibold uppercase tracking-wide mt-1 mb-4">Advogada</p>
+                        <p class="text-sm text-stone-500 font-light mb-6 border-l border-stone-200 pl-4">
+                            Renomada experiência em diferentes Tribunais Brasileiros. Especialista atuante em complexas
+                            demandas Cíveis e Trabalhistas, guiando o escritório com base inegociável na integridade.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: CASES -->
+        <section id="cases" class="page-section hidden fade-in bg-white min-h-screen">
+            <div class="max-w-7xl mx-auto px-6 py-24">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-end mb-20 gap-6 border-b border-stone-200 pb-8">
+                    <div>
+                        <span class="text-brand-700 text-xs font-bold uppercase tracking-widest">Portfólio de
+                            Atuação</span>
+                        <h2 class="text-4xl md:text-5xl font-serif text-stone-950 mt-3 mb-4 tracking-tight">Estudos de
+                            Caso</h2>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Case 1 -->
+                    <div
+                        class="group border border-stone-200 p-8 hover:border-brand-300 transition-colors cursor-pointer bg-white hover:shadow-xl hover:shadow-stone-200/50 rounded-sm">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                            <div class="md:w-1/4">
+                                <span
+                                    class="px-2 py-1 bg-stone-100 text-xs font-medium text-stone-600 uppercase tracking-widest rounded-sm">TRT</span>
+                                <div class="text-sm text-brand-700 mt-3 font-semibold">Direito Trabalhista</div>
+                            </div>
+                            <div class="md:w-1/2">
+                                <h3
+                                    class="text-2xl font-serif text-stone-900 mb-4 group-hover:text-brand-800 transition-colors">
+                                    Reconhecimento de Vínculo e Indenização</h3>
+                                <p class="text-stone-500 font-light leading-relaxed">Atuamos de forma incisiva e
+                                    responsável na defesa dos direitos trabalhistas de um grupo de empregados na
+                                    reversão de dispensa irregular, culminando em integral reparação material e
+                                    rescisória.</p>
+                            </div>
+                            <div class="md:w-1/4 flex justify-end items-center">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 2 -->
+                    <div
+                        class="group border border-stone-200 p-8 hover:border-brand-300 transition-colors cursor-pointer bg-white hover:shadow-xl hover:shadow-stone-200/50 rounded-sm">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                            <div class="md:w-1/4">
+                                <span
+                                    class="px-2 py-1 bg-stone-100 text-xs font-medium text-stone-600 uppercase tracking-widest rounded-sm">Vara
+                                    Civil</span>
+                                <div class="text-sm text-brand-700 mt-3 font-semibold">Direito Civil</div>
+                            </div>
+                            <div class="md:w-1/2">
+                                <h3
+                                    class="text-2xl font-serif text-stone-900 mb-4 group-hover:text-brand-800 transition-colors">
+                                    Resolução Contratual Empresarial</h3>
+                                <p class="text-stone-500 font-light leading-relaxed">Garantimos a defesa de uma empresa
+                                    em uma complexa disputa de quebra de contrato logístico. Nossa ação preventiva e
+                                    litigiosa garantiu o pagamento de danos, reduzindo drasticamente o risco do passivo
+                                    legal.</p>
+                            </div>
+                            <div class="md:w-1/4 flex justify-end items-center">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 3 -->
+                    <div
+                        class="group border border-stone-200 p-8 hover:border-brand-300 transition-colors cursor-pointer bg-white hover:shadow-xl hover:shadow-stone-200/50 rounded-sm">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                            <div class="md:w-1/4">
+                                <span
+                                    class="px-2 py-1 bg-stone-100 text-xs font-medium text-stone-600 uppercase tracking-widest rounded-sm">Vara
+                                    de Família</span>
+                                <div class="text-sm text-brand-700 mt-3 font-semibold">Direito de Família</div>
+                            </div>
+                            <div class="md:w-1/2">
+                                <h3
+                                    class="text-2xl font-serif text-stone-900 mb-4 group-hover:text-brand-800 transition-colors">
+                                    Guarda e Partilha de Bens</h3>
+                                <p class="text-stone-500 font-light leading-relaxed">Com base na comunicação humanizada
+                                    e no respeito, finalizamos um processo conturbado de partilha de bens através de
+                                    negociação hábil, provendo suporte jurídico eficiente e sensível às necessidades
+                                    familiares.</p>
+                            </div>
+                            <div class="md:w-1/4 flex justify-end items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: CONTACT -->
+        <section id="contact" class="page-section hidden fade-in">
+            <div class="grid md:grid-cols-2 min-h-screen">
+                <div class="bg-stone-950 text-white p-12 md:p-24 flex flex-col justify-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 p-12 opacity-10">
+                        <iconify-icon icon="solar:plain-linear" width="200"></iconify-icon>
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl font-serif mb-8 tracking-tight relative z-10">Fale Conosco.</h2>
+                    <p class="text-stone-400 mb-16 font-light max-w-md relative z-10 leading-relaxed">
+                        Nossa equipe está pronta para entender o seu caso e oferecer um serviço jurídico qualificado e
+                        acompanhamento completo.
+                    </p>
+
+                    <div class="space-y-10 relative z-10">
+                        <div class="flex gap-6 items-start">
+                            <div
+                                class="w-10 h-10 rounded-full bg-stone-900 flex items-center justify-center text-brand-500 shrink-0">
+                                <iconify-icon icon="solar:phone-calling-linear" width="20"></iconify-icon>
+                            </div>
+                            <div>
+                                <div class="text-xs text-brand-500 uppercase tracking-widest mb-2 font-bold">Contato
+                                </div>
+                                <p class="text-sm text-stone-300 font-light">+55 (11) 9999-9999</p>
+                                <p class="text-sm text-stone-300 font-light">contato@advocaciadramarlij.com.br</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-12 md:p-24 flex flex-col justify-center">
+                    <form class="space-y-8">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="flex flex-col gap-3">
+                                <label class="text-xs font-bold uppercase text-stone-500 tracking-widest">Nome</label>
+                                <input type="text"
+                                    class="custom-input w-full bg-transparent border-b border-stone-200 p-3 text-sm text-stone-900 transition-all placeholder:text-stone-300"
+                                    placeholder="Seu nome">
+                            </div>
+                            <div class="flex flex-col gap-3">
+                                <label
+                                    class="text-xs font-bold uppercase text-stone-500 tracking-widest">Sobrenome</label>
+                                <input type="text"
+                                    class="custom-input w-full bg-transparent border-b border-stone-200 p-3 text-sm text-stone-900 transition-all placeholder:text-stone-300"
+                                    placeholder="Seu sobrenome">
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-3">
+                            <label class="text-xs font-bold uppercase text-stone-500 tracking-widest">E-mail</label>
+                            <input type="email"
+                                class="custom-input w-full bg-transparent border-b border-stone-200 p-3 text-sm text-stone-900 transition-all placeholder:text-stone-300"
+                                placeholder="exemplo@email.com.br">
+                        </div>
+
+                        <div class="flex flex-col gap-3">
+                            <label class="text-xs font-bold uppercase text-stone-500 tracking-widest">Área de
+                                Interesse</label>
+                            <div class="relative">
+                                <select
+                                    class="custom-input w-full bg-transparent border-b border-stone-200 p-3 text-sm text-stone-900 appearance-none cursor-pointer rounded-none">
+                                    <option>Direito Trabalhista</option>
+                                    <option>Direito Civil</option>
+                                    <option>Direito de Família</option>
+                                    <option>Consultoria Jurídica</option>
+                                </select>
+                                <iconify-icon icon="solar:alt-arrow-down-linear"
+                                    class="absolute right-3 top-3.5 text-stone-400 pointer-events-none"></iconify-icon>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-3">
+                            <label class="text-xs font-bold uppercase text-stone-500 tracking-widest">Mensagem</label>
+                            <textarea rows="4"
+                                class="custom-input w-full bg-transparent border-b border-stone-200 p-3 text-sm text-stone-900 transition-all placeholder:text-stone-300 resize-none"
+                                placeholder="Descreva brevemente o seu caso..."></textarea>
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="button"
+                                class="w-full bg-brand-700 hover:bg-brand-800 text-white font-semibold uppercase tracking-widest py-4 rounded-sm text-xs transition-colors shadow-xl shadow-brand-700/20">
+                                Enviar Solicitação
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-50 border-t border-stone-200 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-20">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="#" class="flex flex-col items-start gap-4 mb-8">
+                        <img src="image 34.png" alt="Advocacia Dra. Marli" class="h-12 w-auto object-contain">
+                    </a>
+                    <p class="text-xs text-stone-500 leading-relaxed mb-8 pr-4">
+                        A Advocacia Dra. Marli de Jesus S.A. garante orientação jurídica de qualidade, com total
+                        dedicação e eficiência na busca de soluções éticas.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-stone-900 uppercase tracking-widest mb-6">Nossas Áreas</h4>
+                    <ul class="space-y-4 text-xs text-stone-500 font-medium">
+                        <li><a href="#" onclick="showPage('practice')"
+                                class="hover:text-brand-700 transition-colors">Direito Trabalhista</a></li>
+                        <li><a href="#" onclick="showPage('practice')"
+                                class="hover:text-brand-700 transition-colors">Direito Civil</a></li>
+                        <li><a href="#" onclick="showPage('practice')"
+                                class="hover:text-brand-700 transition-colors">Direito de Família</a></li>
+                        <li><a href="#" onclick="showPage('practice')"
+                                class="hover:text-brand-700 transition-colors">Consultoria Preventiva</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-stone-900 uppercase tracking-widest mb-6">O Escritório</h4>
+                    <ul class="space-y-4 text-xs text-stone-500 font-medium">
+                        <li><a href="#" onclick="showPage('home')"
+                                class="hover:text-brand-700 transition-colors">Início</a></li>
+                        <li><a href="#" onclick="showPage('attorneys')" class="hover:text-brand-700 transition-colors">A
+                                Equipe</a></li>
+                        <li><a href="#" onclick="showPage('cases')"
+                                class="hover:text-brand-700 transition-colors">Casos</a></li>
+                        <li><a href="#" onclick="showPage('contact')"
+                                class="hover:text-brand-700 transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-stone-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-[10px] text-stone-400 uppercase tracking-wider">© 2026 Advocacia Dra. Marli de Jesus S.A.
+                    Todos os direitos reservados.</p>
+                <div class="flex gap-6 text-[10px] text-stone-400 uppercase tracking-wider">
+                    <a href="#" class="hover:text-stone-900">Política de Privacidade</a>
+                    <a href="#" class="hover:text-stone-900">Termos e Serviços</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function showPage(pageId) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('fade-in');
+            });
+
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.remove('hidden');
+                void target.offsetWidth; // Trigger reflow
+                target.classList.add('fade-in');
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+        });
+    </script>
+</body>
+
+</html>
